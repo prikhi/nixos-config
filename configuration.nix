@@ -76,14 +76,17 @@
     git
     zsh
 
+    python
     python27Packages.pip
     python27Packages.ipython
     python27Packages.virtualenv
+    python3
     python34Packages.pip
     python34Packages.ipython
     python34Packages.virtualenv
 
     cmake
+    clang
     gcc
     lua5_2
     nasm
@@ -91,7 +94,7 @@
     stdenv
     valgrind
 
-    vim
+    vim_configurable
     aspell
     aspellDicts.en
     hunspell
@@ -150,6 +153,12 @@
     chromium = {
       enablePepperFlash = true;
       enablePepperPDF = true;
+    };
+
+    vim = {
+      python = true;
+      netbeans = false;
+      ftNixSupport = true;
     };
   };
 
