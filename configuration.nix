@@ -7,27 +7,36 @@
 
   # Filesystem Configuration
   fileSystems."/" =
-    { device = "/dev/disk/by-label/molly_root";
+    { device = "/dev/disk/by-label/nixos_usb";
       fsType = "ext4";
+      label = "nixos_usb";
+      options = "defaults,relatime,noatime,discard";
     };
+  fileSystems."/tmp" = {
+    device = "tmpfs";
+    fsType = "tmpfs";
+    options = "nosuid,nodev,relatime,mode=1777";
+  };
+
   # No swap devices
   swapDevices = [ ];
 
   # Boot Options
   boot = {
     extraModulePackages = [ pkgs.linuxPackages.broadcom_sta ];
-    initrd.availableKernelModules = [ 
-      "ata_piix" 
-      "ahci" 
-      "ohci_pci" 
-      "ehci_pci" 
-      "xhci_hcd" 
-      "usb_storage" 
+    initrd.availableKernelModules = [
+      "ata_piix"
+      "ahci"
+      "ohci_pci"
+      "ehci_pci"
+      "xhci_hcd"
+      "usb_storage"
     ];
+    kernelParams = [ "elevator=noop" ];
     loader.grub = {
       enable = true;
       version = 2;
-      device = "/dev/sdb/";
+      device = "/dev/sdc";
       memtest86.enable = true;
     };
   };
@@ -35,12 +44,10 @@
   networking = {
     hostName = "Molly";
     # Use interface names like wlan0 instead of wlp2s0
-    usePredictableInterfaceNames = false; 
-    # Disable all wireless, enable wicd
-    wireless.enable = false;
-    interfaceMonitor.enable = false;
-    useDHCP = false;
-    wicd.enable = true;
+    usePredictableInterfaceNames = false;
+    # To add a network run:
+    # wpa_passphrase 'mynetwork' 'mypassphrase' | grep -v '#psk="' >> /etc/wpa_supplicant.conf
+    wireless.enable = true;
   };
 
 
@@ -70,8 +77,9 @@
     chromium
     firefoxWrapper
 
-    vlc
+    ffmpeg
     mpv
+    vlc
 
     git
     zsh
@@ -95,6 +103,7 @@
     valgrind
 
     vim_configurable
+    vimPlugins.YouCompleteMe
     aspell
     aspellDicts.en
     hunspell
@@ -109,6 +118,7 @@
     ranger
     remind
     screen
+    taskwarrior
     w3m
 
     gimp
@@ -124,9 +134,10 @@
     chromedriver
     gtk_engines
     lxappearance
-    # mcomix
+    mcomix
     selenium-server-standalone
 
+    linuxPackages.cpupower
     glibcLocales
     hddtemp
     libnotify
@@ -136,6 +147,8 @@
     psmisc
     rsync
     sshfsFuse
+    unclutter
+    unzip
     upower
     wget
     xdg-user-dirs
@@ -173,10 +186,15 @@
     printing.enable = true;
     udisks2.enable = true;
 
+    postgresql = {
+        enable = true;
+        package = pkgs.postgresql93;
+    };
+
     xserver = {
       enable = true;
       layout = "us";
-      videoDrivers = [ "ati_unfree" "xf86_video_nouveau" "intel" "cirrus" "vesa" "vmware" ];
+      videoDrivers = [ "ati" "xf86_video_nouveau" "intel" "cirrus" "vesa" "vmware" ];
       synaptics = {
         enable = true;
         twoFingerScroll = true;
@@ -223,7 +241,7 @@
       "http://cache.nixos.org"
     ];
 
-    maxJobs = 1;
+    maxJobs = 4;
 
   };
 
