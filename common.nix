@@ -5,51 +5,18 @@
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
   ];
 
-  # Filesystem Configuration
-  fileSystems."/" =
-    { device = "/dev/disk/by-label/nixos_usb";
-      fsType = "ext4";
-      label = "nixos_usb";
-      options = "defaults,relatime,noatime,discard";
-    };
-  fileSystems."/tmp" = {
-    device = "tmpfs";
-    fsType = "tmpfs";
-    options = "nosuid,nodev,relatime,mode=1777";
-  };
-
-  # No swap devices
-  swapDevices = [ ];
-
   # Boot Options
   boot = {
-    extraModulePackages = [ pkgs.linuxPackages.broadcom_sta ];
-    initrd.availableKernelModules = [
-      "ata_piix"
-      "ahci"
-      "ohci_pci"
-      "ehci_pci"
-      "xhci_hcd"
-      "usb_storage"
-    ];
-    kernelParams = [ "elevator=noop" ];
     loader.grub = {
       enable = true;
-      version = 2;
-      device = "/dev/sdc";
       memtest86.enable = true;
     };
   };
 
   networking = {
-    hostName = "Molly";
     # Use interface names like wlan0 instead of wlp2s0
     usePredictableInterfaceNames = false;
-    # To add a network run:
-    # wpa_passphrase 'mynetwork' 'mypassphrase' | grep -v '#psk="' >> /etc/wpa_supplicant.conf
-    wireless.enable = true;
   };
-
 
   hardware = {
     enableAllFirmware = true;
@@ -194,11 +161,6 @@
     xserver = {
       enable = true;
       layout = "us";
-      videoDrivers = [ "ati" "xf86_video_nouveau" "intel" "cirrus" "vesa" "vmware" ];
-      synaptics = {
-        enable = true;
-        twoFingerScroll = true;
-      };
 
       displayManager.slim = {
         enable = true;
@@ -225,11 +187,6 @@
     ];
   };
 
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "ondemand";
-  };
-
   nix = {
     trustedBinaryCaches = [
       "http://hydra.nixos.org"
@@ -240,8 +197,6 @@
       "http://hydra.nixos.org"
       "http://cache.nixos.org"
     ];
-
-    maxJobs = 4;
 
   };
 
