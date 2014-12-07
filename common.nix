@@ -9,7 +9,6 @@
   boot = {
     loader.grub = {
       enable = true;
-      memtest86.enable = true;
     };
   };
 
