@@ -29,7 +29,7 @@
   };
 
   services = {
-    virtualbox.enable = true;
+    virtualboxGuest.enable = true;
     xserver.videoDrivers = [ "virtualbox" ];
   };
 
