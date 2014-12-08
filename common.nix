@@ -99,6 +99,7 @@
 
     chromedriver
     gtk_engines
+    hicolor_icon_theme
     lxappearance
     mcomix
     selenium-server-standalone
