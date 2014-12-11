@@ -46,6 +46,8 @@
     ffmpeg
     mpv
     vlc
+    pavucontrol
+    pasystray
 
     git
     zsh
@@ -59,12 +61,14 @@
     python34Packages.ipython
     python34Packages.virtualenv
 
-    cmake
+    chromedriver
     clang
+    cmake
     gcc
     lua5_2
     nasm
     pkgconfig
+    selenium-server-standalone
     stdenv
     valgrind
 
@@ -89,7 +93,8 @@
 
     gimp
     keepassx
-    # pencil
+    mcomix
+    pencil
     pidgin
     pidginotr
     pinta
@@ -97,17 +102,15 @@
     scrot
     zathura
 
-    chromedriver
+    dina-font
     gtk_engines
     hicolor_icon_theme
     lxappearance
-    mcomix
-    selenium-server-standalone
 
-    linuxPackages.cpupower
     glibcLocales
     hddtemp
     libnotify
+    linuxPackages.cpupower
     lm_sensors
     ntfs3g
     p7zip
