@@ -155,6 +155,7 @@
     openssh.enable = true;
     printing.enable = true;
     udisks2.enable = true;
+    memcached.enable = true;
 
     postgresql = {
         enable = true;
