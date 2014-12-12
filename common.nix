@@ -49,9 +49,6 @@
     pavucontrol
     pasystray
 
-    git
-    zsh
-
     python
     python27Packages.pip
     python27Packages.ipython
@@ -79,8 +76,10 @@
     hunspell
     mythes
 
+    atool
     cowsay
     fortune
+    git
     htop
     iftop
     mutt
@@ -90,6 +89,7 @@
     screen
     taskwarrior
     w3m
+    zsh
 
     gimp
     keepassx
