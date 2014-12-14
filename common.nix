@@ -33,42 +33,12 @@
   };
   time.timeZone = "US/Eastern";
 
-  # List packages installed in system profile. To search by name, run:
-  # -env -qaP | grep wget
   environment.systemPackages = with pkgs; [
+    # System
     slim
     awesome
-    compton
 
-    chromium
-    firefoxWrapper
-
-    ffmpeg
-    mpv
-    vlc
-    pavucontrol
-    pasystray
-
-    python
-    python27Packages.pip
-    python27Packages.ipython
-    python27Packages.virtualenv
-    python3
-    python34Packages.pip
-    python34Packages.ipython
-    python34Packages.virtualenv
-
-    chromedriver
-    clang
-    cmake
-    gcc
-    lua5_2
-    nasm
-    pkgconfig
-    selenium-server-standalone
-    stdenv
-    valgrind
-
+    # Vim
     vim_configurable
     vimPlugins.YouCompleteMe
     aspell
@@ -76,7 +46,7 @@
     hunspell
     mythes
 
-    atool
+    # CLI User Apps
     cowsay
     fortune
     git
@@ -91,6 +61,10 @@
     w3m
     zsh
 
+    # GUI User Apps
+    chromium
+    compton
+    firefoxWrapper
     gimp
     keepassx
     mcomix
@@ -98,15 +72,45 @@
     pidgin
     pidginotr
     pinta
-    rxvt_unicode
     scrot
+    unclutter
     zathura
 
+    # Audio / Video
+    ffmpeg
+    mpv
+    vlc
+    pavucontrol
+    pasystray
+
+    # Python
+    python
+    python27Packages.pip
+    python27Packages.ipython
+    python27Packages.virtualenv
+    python27Packages.virtualenvwrapper
+    python3
+
+    # General Development
+    chromedriver
+    clang
+    cmake
+    gcc
+    lua5_2
+    nasm
+    pkgconfig
+    selenium-server-standalone
+    stdenv
+    valgrind
+
+    # Theming
     dina-font
     gtk_engines
     hicolor_icon_theme
     lxappearance
 
+    # Utilities
+    atool
     glibcLocales
     hddtemp
     libnotify
@@ -117,7 +121,6 @@
     psmisc
     rsync
     sshfsFuse
-    unclutter
     unzip
     upower
     wget
