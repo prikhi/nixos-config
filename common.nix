@@ -156,6 +156,10 @@
     printing.enable = true;
     udisks2.enable = true;
     memcached.enable = true;
+    psd = {
+      enable = true;
+      users = [ "prikhi" ];
+    };
 
     postgresql = {
         enable = true;
@@ -184,7 +188,7 @@
   users.extraUsers.prikhi = {
     createHome = true;
     home = "/home/prikhi";
-    shell = "/run/current-system/sw/bin/zsh";
+    shell = "${pkgs.zsh}/bin/zsh";
     extraGroups = [ "wheel" ];
     openssh.authorizedKeys.keys = [
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCulOEw9YrhFSFITZyAgndRr953EdgjU782RPvvjoNci3ACJJ8BFvN+QgxznDHKhiC9yR+zC1R7caOtHCi3NI4WHGhGvoNxvEmdsV803Og1SayQDh34uWmPLzvRHJsejGpfbWVpa0YTI5h4A/yzU2s2NDy956cEMPlQdS0lTc+YwWBKcH/U8prhkRH5KQzq7OTNpuAQAISR9Ue1FvdcY/bjq3aE/0+XY/68Nebyw0d99LjmepKO2Ksm0E4zsGIQBdzrYQGNjkcWOnQDnXXNXGoqU2njQqrObcqm7a5GfXAJA0idqQuxOX3k5Wc7xZ7ldx9XUs2HOZ1YFr8eueZPXuK1 prikhi@Lucy"
