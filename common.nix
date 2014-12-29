@@ -49,7 +49,7 @@
     # CLI User Apps
     cowsay
     fortune
-    git
+    gitAndTools.gitFull
     htop
     iftop
     mutt
@@ -59,6 +59,7 @@
     screen
     taskwarrior
     w3m
+    wyrd
     zsh
 
     # GUI User Apps
@@ -72,6 +73,7 @@
     pidgin
     pidginotr
     pinta
+    rtorrent
     scrot
     unclutter
     zathura
@@ -96,8 +98,9 @@
     clang
     cmake
     gcc
-    lua5_2
+    lua
     nasm
+    nox
     pkgconfig
     selenium-server-standalone
     stdenv
@@ -199,6 +202,7 @@
   };
 
   nix = {
+    useChroot = true;
     trustedBinaryCaches = [
       "http://hydra.nixos.org"
       "http://cache.nixos.org"
