@@ -47,7 +47,7 @@
   };
 
   services.xserver = {
-    videoDrivers = [ "ati" "nvidia" "intel" "cirrus" "vesa" ];
+    videoDrivers = [ "ati" "nvidia" "nouveau" "intel" "cirrus" "vesa" ];
     synaptics = {
       enable = true;
       twoFingerScroll = true;
